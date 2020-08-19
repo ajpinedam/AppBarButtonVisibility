@@ -1,0 +1,34 @@
+<Page
+    x:Class="ButtonVisibility.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ButtonVisibility"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="20,60,20,0" >
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Hello"
+               Grid.Row="1" />
+
+        <Button Click="Button_Click" Content="Change Visibility" Grid.Row="2"  />
+
+        <CommandBar Content="Title">
+          <CommandBar.PrimaryCommands>
+            <AppBarButton Visibility="{Binding IsModifiable, Converter={StaticResource TrueToVisible}, FallbackValue=Visible}">
+              <TextBlock Text="Save" />
+            </AppBarButton>
+          </CommandBar.PrimaryCommands>
+        </CommandBar>		
+    </Grid>
+</Page>
+
+<!--Visibility="{Binding IsModifiable, Converter={StaticResource TrueToVisible}, FallbackValue=Visible}"-->
+
+<!--Visibility="{Binding [IsModifiable], Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed}"-->
